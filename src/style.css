@@ -1,0 +1,296 @@
+:root {
+    --clr-primary: hsl(198, 97%, 14%);
+    --clr-secondary: hsl(207, 16%, 89%);
+    --clr-accent-alpha: hsl(344, 54%, 46%);
+    --clr-accent-beta: hsl(244, 23%, 73%);
+
+    --clr-icon: var(--clr-accent-alpha);
+
+    --clr-bg: var(--clr-primary);
+    --clr-body: var(--clr-primary);
+    --clr-heading: var(--clr-accent-beta);
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+body {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    font-family: sans-serif;
+    background-color: var(--clr-bg);
+    color: var(--clr-body);
+    min-height: 100svh;
+    padding: 5rem 1rem;
+    gap: 2rem;
+}
+
+h1.bg-text {
+    position: absolute;
+    top: -20px;
+    font-size: clamp(20px, 13vw, 200px);
+    font-weight: 900;
+    white-space: nowrap;
+    justify-self: center;
+    line-height: .5;
+    letter-spacing: 10px;
+    color: var(--clr-heading);
+    opacity: .2;
+    z-index: -1;
+    margin: 0 1rem;
+}
+
+.sidebar-icon {
+    width: 1.3rem;
+    height: 1.3rem;
+    fill: var(--icon, currentColor);
+}
+
+.groups {
+    display: grid;
+    gap: 1rem;
+    width: 18rem;
+    padding: 1rem 0 0;
+    background-color: var(--clr-secondary);
+    box-shadow: .3rem .3rem var(--clr-primary),
+                .55rem .55rem var(--clr-secondary),
+                -.3rem -.3rem var(--clr-primary),
+                -.55rem -.55rem var(--clr-secondary);
+}
+
+.group {
+    margin-bottom: 1rem;
+}
+
+.group .head {
+    --icon: var(--clr-accent-alpha);
+
+    display: grid;
+    grid-template-columns: 2rem 1fr min-content;
+    align-items: center;
+    cursor: context-menu;
+    color: var(--clr-primary);
+    padding: .5rem 1rem;
+}
+
+.group .head:hover {
+    background-color: hsl(195, 57%, 50%, 0.4);
+}
+
+.group-name {
+    font-weight: 600;
+}
+
+.projects-nav {
+    font-size: .95rem;
+}
+
+.projects-nav li {
+    --bg-clr: hsl(341, 100%, 48%, 0.4);
+
+    margin: 0 .6rem;
+    padding: .5rem .7rem;
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    align-items: center;
+}
+
+.projects-nav li:nth-child(2n + 1) {
+    --bg-clr: hsl(269, 100%, 50%, 0.4);
+}
+
+.projects-nav li .sidebar-icon {
+    --icon: hsl(341, 100%, 48%);
+}
+
+.projects-nav li:nth-child(2n + 1) .sidebar-icon {
+    --icon: hsl(269, 100%, 50%);
+}
+
+.projects-nav li:hover {
+    background-color: var(--bg-clr);
+}
+
+.projects-nav li:nth-child(2n + 1):hover {
+    background-color: var(--bg-clr);
+}
+
+.active {
+    background-color: var(--bg-clr);
+}
+
+.content {
+    padding: 3rem 0;
+    margin-right: 3rem;
+    gap: 1rem;
+}
+
+.current-list {
+    padding: 1rem;
+    background-color: var(--clr-secondary);
+    box-shadow: inset 0 0 .1rem var(--clr-primary),
+                -.3rem -.3rem var(--clr-primary),
+                -.6rem -.6rem var(--clr-secondary);
+}
+
+.current-list .head {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    color: var(--clr-accent-alpha);
+}
+
+.task-list {
+    display: grid;
+    gap: .3rem;
+}
+
+.priority-1 {
+    --priority: hsl(15, 92%, 49%, 0.7);
+}
+.priority-2 {
+    --priority: hsl(281, 73%, 81%, 0.7);
+}
+.priority-3 {
+    --priority: hsl(91, 73%, 81%, 0.7);
+}
+.priority-4 {
+    --priority: hsl(185, 65%, 60%, 0.7);
+}
+.priority-5 {
+    --priority: hsl(197, 95%, 84%, 0.7);
+}
+
+.task {
+    border-radius: 3px;
+    background-color: var(--priority, hsl(244, 23%, 73%));
+    font-size: 1.2rem;
+}
+
+[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+.task label {
+    display: flex;
+    align-items: center;
+    padding: 1rem .8rem;
+    cursor: pointer;
+}
+
+label .task-name {
+    display: inline-flex;
+    position: relative;
+}
+
+.custom-checkbox {
+    --size: 1em;
+    width: var(--size);
+    height: var(--size);
+    margin-right: .75em;
+    border: 2px solid currentColor;
+    border-radius: 20%;
+    display: inline-block;
+    transition: transform 150ms ease-in;
+}
+
+.task:hover .custom-checkbox {
+    transform: scale(.9);
+    color: var(--clr-accent-alpha);
+}
+
+[type="checkbox"]:focus + label .custom-checkbox {
+    transform: translateX(0.2em);
+    color: var(--clr-accent-alpha); 
+}
+
+[type="checkbox"]:checked + label .custom-checkbox {
+    background-color: var(--clr-accent-alpha);
+    border-color: var(--clr-accent-alpha);
+    box-shadow: inset  0 0 0 2px hsl(0, 0%, 100%);
+}
+
+[type="checkbox"]:checked + label {
+    opacity: 0.5;
+}
+
+.task label .task-name::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    background-color: currentColor;
+    transform: scale(0);
+    transform-origin: right;
+    transition: transform 200ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label .task-name::after {
+    transform: scale(1);
+    transform-origin: left;
+}
+
+form.new-task {
+    display: flex;
+    margin-top: 1rem;
+}
+
+#add-task{
+    width: 100%;
+    border: 0;
+    background: none;
+    outline: none;
+    font-size: 1.2rem;
+    padding: 0 0 .2em;
+    color: var(--clr-accent-alpha);
+    border-bottom: 1px solid currentColor;
+    transition: border-bottom 150ms ease-in;
+    order: 2;
+}
+
+#add-task::placeholder {
+    color: inherit;
+    opacity: 0.6;
+}
+
+#add-task:focus::placeholder {
+    opacity: 0.1;
+}
+
+#add-task:focus {
+    border-bottom: 2px solid var(--clr-accent-alpha);
+}
+
+.new-task-btn {
+    border: 0;
+    background: none;
+    outline: none;
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-right: .5rem;
+    color: var(--clr-accent-alpha);
+    cursor: pointer;
+    transition: opacity 200ms ease-in, transform 150ms ease-in;
+    line-height: 0;
+}
+
+.new-task-btn:hover {
+    opacity: .6;
+}
+
+.new-task-btn:focus  {
+    transform: scale(1.2);
+}

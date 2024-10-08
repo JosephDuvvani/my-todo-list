@@ -5,5 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Template</title>
   </head>
-  <body></body>
+  <body>
+    <h1 class="bg-text">Task Away</h1>
+    <div class="sidebar">
+      <ul class="groups">
+        <li class="my-projects group">
+          <div class="head">
+            <div class="sidebar-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>package</title>
+                <path
+                  d="M5.12,5H18.87L17.93,4H5.93L5.12,5M20.54,5.23C20.83,5.57 21,6 21,6.5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V6.5C3,6 3.17,5.57 3.46,5.23L4.84,3.55C5.12,3.21 5.53,3 6,3H18C18.47,3 18.88,3.21 19.15,3.55L20.54,5.23M6,18H12V15H6V18Z"
+                />
+              </svg>
+            </div>
+            <div class="group-name">My Projects</div>
+          </div>
+
+          <ul class="projects-nav">
+            <li>
+              <div class="sidebar-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <title>format-list-checks</title>
+                  <path
+                    d="M3,5H9V11H3V5M5,7V9H7V7H5M11,7H21V9H11V7M11,15H21V17H11V15M5,20L1.5,16.5L2.91,15.09L5,17.17L9.59,12.59L11,14L5,20Z"
+                  />
+                </svg>
+              </div>
+              <div id="personal" class="project-name">Personal</div>
+            </li>
+            <li>
+              <div class="sidebar-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <title>format-list-checks</title>
+                  <path
+                    d="M3,5H9V11H3V5M5,7V9H7V7H5M11,7H21V9H11V7M11,15H21V17H11V15M5,20L1.5,16.5L2.91,15.09L5,17.17L9.59,12.59L11,14L5,20Z"
+                  />
+                </svg>
+              </div>
+              <div id="health" class="project-name">Health</div>
+            </li>
+            <li>
+              <div class="sidebar-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <title>format-list-checks</title>
+                  <path
+                    d="M3,5H9V11H3V5M5,7V9H7V7H5M11,7H21V9H11V7M11,15H21V17H11V15M5,20L1.5,16.5L2.91,15.09L5,17.17L9.59,12.59L11,14L5,20Z"
+                  />
+                </svg>
+              </div>
+              <div id="work" class="project-name">Work</div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="content">
+      <div class="current-list">
+        <div class="head">
+          <div class="title">My Day</div>
+        </div>
+
+        <div class="task-list">
+          <div class="task">
+            <input type="checkbox" id="task-1" />
+            <label for="task-1">
+              <span class="custom-checkbox"></span>
+              <span class="task-name">Do it now!</span>
+            </label>
+          </div>
+          <div class="task">
+            <input type="checkbox" id="task-2" />
+            <label for="task-2">
+              <span class="custom-checkbox"></span>
+              <span class="task-name">Do it now!</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <form action="" class="new-task">
+        <input
+          type="text"
+          id="add-task"
+          aria-label="add task"
+          placeholder="new task name"
+          autocomplete="off"
+        />
+        <button class="new-task-btn" aria-label="add task button">+</button>
+      </form>
+    </div>
+  </body>
 </html>
