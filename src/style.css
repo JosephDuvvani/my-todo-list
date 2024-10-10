@@ -54,11 +54,11 @@ h1.bg-text {
     width: 1.3rem;
     height: 1.3rem;
     fill: var(--icon, currentColor);
+    pointer-events: none;
 }
 
 .groups {
     display: grid;
-    gap: 1rem;
     width: 18rem;
     padding: 1rem 0 0;
     background-color: var(--clr-secondary);
@@ -69,7 +69,7 @@ h1.bg-text {
 }
 
 .group {
-    margin-bottom: 1rem;
+    margin-bottom: .6rem;
 }
 
 .group .head {
@@ -101,7 +101,8 @@ h1.bg-text {
     margin: 0 .6rem;
     padding: .5rem .7rem;
     display: grid;
-    grid-template-columns: 2rem 1fr;
+    grid-template-columns: 2rem 1fr min-content;
+    position: relative;
     align-items: center;
 }
 
@@ -127,6 +128,21 @@ h1.bg-text {
 
 .active {
     background-color: var(--bg-clr);
+}
+
+.project-name {
+    cursor: context-menu;
+    pointer-events: none;
+}
+
+.delete-btn {
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 0 .5rem;
+}
+
+.delete-btn:hover {
+    color: white;
 }
 
 .content {
@@ -175,37 +191,45 @@ h1.bg-text {
     border-radius: 3px;
     background-color: var(--priority, hsl(244, 23%, 73%));
     font-size: 1.2rem;
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    gap: .8rem;
+    padding: 1rem .8rem;
+    position: relative;
 }
 
 [type="checkbox"] {
     opacity: 0;
     position: absolute;
+    width: 0;
+    height: 0;
 }
 
 .task label {
     display: flex;
     align-items: center;
-    padding: 1rem .8rem;
+    width: min-content;
     cursor: pointer;
 }
 
-label .task-name {
+.task-title {
     display: inline-flex;
     position: relative;
+    cursor: context-menu;
+    justify-self: start;
 }
 
 .custom-checkbox {
     --size: 1em;
     width: var(--size);
     height: var(--size);
-    margin-right: .75em;
     border: 2px solid currentColor;
     border-radius: 20%;
     display: inline-block;
     transition: transform 150ms ease-in;
 }
 
-.task:hover .custom-checkbox {
+.custom-checkbox:hover {
     transform: scale(.9);
     color: var(--clr-accent-alpha);
 }
@@ -221,11 +245,12 @@ label .task-name {
     box-shadow: inset  0 0 0 2px hsl(0, 0%, 100%);
 }
 
-[type="checkbox"]:checked + label {
+[type="checkbox"]:checked + label,
+[type="checkbox"]:checked + label + .task-title {
     opacity: 0.5;
 }
 
-.task label .task-name::after {
+.task .task-title::after {
     content: '';
     position: absolute;
     left: 0;
@@ -238,17 +263,19 @@ label .task-name {
     transition: transform 200ms ease-in-out;
 }
 
-[type="checkbox"]:checked + label .task-name::after {
+[type="checkbox"]:checked + label + .task-title::after {
     transform: scale(1);
     transform-origin: left;
 }
 
-form.new-task {
+form.new-task,
+form.new-project {
     display: flex;
     margin-top: 1rem;
 }
 
-#add-task{
+#add-task, 
+#add-project {
     width: 100%;
     border: 0;
     background: none;
@@ -261,20 +288,24 @@ form.new-task {
     order: 2;
 }
 
-#add-task::placeholder {
+#add-task::placeholder,
+#add-project::placeholder {
     color: inherit;
     opacity: 0.6;
 }
 
-#add-task:focus::placeholder {
+#add-task:focus::placeholder,
+#add-project:focus::placeholder {
     opacity: 0.1;
 }
 
-#add-task:focus {
+#add-task:focus,
+#add-project:focus {
     border-bottom: 2px solid var(--clr-accent-alpha);
 }
 
-.new-task-btn {
+.new-task-btn,
+.new-project-btn {
     border: 0;
     background: none;
     outline: none;
@@ -287,10 +318,12 @@ form.new-task {
     line-height: 0;
 }
 
-.new-task-btn:hover {
+.new-task-btn:hover,
+.new-project-btn:hover {
     opacity: .6;
 }
 
-.new-task-btn:focus  {
+.new-task-btn:focus,
+.new-project-btn:focus  {
     transform: scale(1.2);
 }
